@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import CtaBand from "@/components/cta-band";
 import BackToHomeButton from "@/components/back-to-home-button";
+import { testimonials } from "@/data/testimonials";
 import {
   CelebrationIcon,
   LateNightIcon,
@@ -71,70 +72,6 @@ const useCaseColumns = [
       { label: "Trainings", icon: TrainingIcon },
       { label: "Team meetings", icon: MeetingsIcon },
     ],
-  },
-];
-
-type Testimonial = {
-  offering: string;
-  companyLogo: string;
-  companyLogoAlt: string;
-  companyLogoWidth: number;
-  companyLogoHeight: number;
-  quote: string;
-  name: string;
-  designation: string;
-  company: string;
-  headshot?: string;
-  headshotAlt?: string;
-  headshotClassName?: string;
-};
-
-const testimonials: Testimonial[] = [
-  {
-    offering: "Bill to Company",
-    companyLogo: "/testimonials/wework-logo.png",
-    companyLogoAlt: "WeWork logo",
-    companyLogoWidth: 240,
-    companyLogoHeight: 72,
-    quote:
-      "Swiggy's Bill to Company solution has brought unmatched transparency and control to our meal benefits. We now track expenses in real-time, stay fully aligned with budgets, and still give our employees the freedom to choose their meals. The shift has not only simplified admin but improved employee satisfaction.",
-    name: "Maria Sneha",
-    designation: "Administrator",
-    company: "WeWork, Hyderabad",
-    headshot: "/testimonials/maria-sneha.png",
-    headshotAlt: "Maria Sneha",
-    headshotClassName:
-      "h-[104px] w-[104px] shrink-0 rounded-2xl object-contain object-top",
-  },
-  {
-    offering: "Bill to Company",
-    companyLogo: "/testimonials/translumina-logo.png",
-    companyLogoAlt: "Translumina logo",
-    companyLogoWidth: 112,
-    companyLogoHeight: 23,
-    quote:
-      "MyBiz Wallet on Swiggy has been a real advantage. It's made ordering food even more convenient-payments are fast, seamless, and hassle-free, with no need to switch apps or re-enter details. The best part is that the corporate wallet balance updates instantly. I also receive invoices and MIS reports on time, exactly as needed. Overall, it's been a smooth and reliable experience.",
-    name: "Bhoomika",
-    designation: "Assistant Manager, Admin",
-    company: "Translumina",
-    headshot: "/testimonials/translumina-bhoomika.jpeg",
-    headshotAlt: "Bhoomika",
-    headshotClassName:
-      "h-[92px] w-[92px] shrink-0 rounded-2xl object-cover object-top",
-  },
-  {
-    offering: "Bill to Company",
-    companyLogo: "/testimonials/5.png",
-    companyLogoAlt: "KFintech logo",
-    companyLogoWidth: 100,
-    companyLogoHeight: 20,
-    quote:
-      "Earlier, meal reimbursements meant chasing employees for receipts, handling paperwork, and managing multiple approval layers-costing us time and productivity. With Swiggy for Work, the process is completely seamless, eliminating administrative overhead. It has streamlined our workflows and saved valuable hours for our team.",
-    name: "A V Hanisha",
-    designation: "Facility Manager",
-    company: "KFintech, Hyderabad",
-    headshot: "/testimonials/av-hanisha.png",
-    headshotAlt: "A V Hanisha",
   },
 ];
 
