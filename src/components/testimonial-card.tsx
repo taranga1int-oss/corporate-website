@@ -34,7 +34,7 @@ export default function TestimonialCard({
         {testimonial.quote}
       </p>
 
-      <div className="mt-3 grid min-h-[92px] grid-cols-[minmax(0,1fr)_88px] items-start gap-3 sm:mt-4 sm:min-h-[100px] sm:grid-cols-[minmax(0,1fr)_96px] sm:gap-4">
+      <div className="mt-1 grid min-h-[92px] grid-cols-[minmax(0,1fr)_88px] items-center gap-3 sm:mt-2 sm:min-h-[100px] sm:grid-cols-[minmax(0,1fr)_96px] sm:gap-4">
         <div className="min-w-0 pb-1 text-base leading-snug">
           <p className="text-xl font-bold text-ink sm:text-lg">
             {testimonial.name}
