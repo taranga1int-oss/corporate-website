@@ -4,6 +4,7 @@ export type Testimonial = {
   companyLogoAlt: string;
   companyLogoWidth: number;
   companyLogoHeight: number;
+  companyLogoClassName?: string;
   quote: string;
   name: string;
   designation: string;
@@ -27,15 +28,15 @@ export const testimonials: Testimonial[] = [
     company: "MediAssist",
     headshot: "/testimonials/stanley-agnelo.png",
     headshotAlt: "Stanley Agnelo",
-    headshotClassName:
-      "h-[92px] w-[92px] shrink-0 rounded-2xl object-cover object-top",
+    headshotClassName: "object-cover object-top",
   },
   {
     offering: "Bill to Company",
     companyLogo: "/testimonials/wework-logo.png",
     companyLogoAlt: "WeWork logo",
-    companyLogoWidth: 240,
-    companyLogoHeight: 72,
+    companyLogoWidth: 420,
+    companyLogoHeight: 154,
+    companyLogoClassName: "max-h-[58px] max-w-[252px] sm:max-h-16 sm:max-w-full",
     quote:
       "Swiggy's Bill to Company solution has brought unmatched transparency and control to our meal benefits. We now track expenses in real-time, stay fully aligned with budgets, and still give our employees the freedom to choose their meals. The shift has not only simplified admin but improved employee satisfaction.",
     name: "Maria Sneha",
@@ -43,8 +44,7 @@ export const testimonials: Testimonial[] = [
     company: "WeWork",
     headshot: "/testimonials/maria-sneha.png",
     headshotAlt: "Maria Sneha",
-    headshotClassName:
-      "h-[104px] w-[104px] shrink-0 rounded-2xl object-contain object-top",
+    headshotClassName: "object-contain object-bottom",
   },
   {
     offering: "Bill to Company",
@@ -73,7 +73,6 @@ export const testimonials: Testimonial[] = [
     company: "Translumina",
     headshot: "/testimonials/translumina-bhoomika.jpeg",
     headshotAlt: "Bhoomika",
-    headshotClassName:
-      "h-[92px] w-[92px] shrink-0 rounded-2xl object-cover object-top",
+    headshotClassName: "object-cover object-top",
   },
 ];

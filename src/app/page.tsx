@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 import ContactForm from "@/components/contact-form";
+import TestimonialCard from "@/components/testimonial-card";
 import { testimonials } from "@/data/testimonials";
 import {
   ChevronRight,
@@ -224,49 +225,11 @@ export default function Home() {
           </div>
           <div className="grid snap-x snap-mandatory grid-flow-col auto-cols-[92%] gap-6 overflow-x-auto pb-4 pt-2 sm:auto-cols-[78%] md:auto-cols-[58%] lg:auto-cols-[calc((100%-3rem)/3)]">
             {testimonials.map((testimonial) => (
-                <article
-                  key={`${testimonial.name}-${testimonial.companyLogo}`}
-                  className="snap-start flex h-full flex-col rounded-3xl border border-white/60 bg-white p-6 shadow-soft md:p-7"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex whitespace-nowrap rounded-full bg-brand-soft px-4 py-1.5 text-xs font-semibold text-brand">
-                      {testimonial.offering}
-                    </span>
-                    <div className="flex h-12 min-w-0 flex-1 items-center justify-center overflow-hidden">
-                      <Image
-                        src={`${assetBase}${testimonial.companyLogo}`}
-                        alt={testimonial.companyLogoAlt}
-                        width={testimonial.companyLogoWidth}
-                        height={testimonial.companyLogoHeight}
-                        className="h-auto max-h-16 w-auto max-w-full object-contain"
-                      />
-                    </div>
-                  </div>
-                  <p className="mt-5 flex-1 text-base leading-relaxed text-slate-800">
-                    {testimonial.quote}
-                  </p>
-                  <div className="mt-6 flex items-end justify-between gap-4">
-                    <div className="text-base">
-                      <p className="font-bold text-ink">{testimonial.name}</p>
-                      <p className="whitespace-nowrap text-[15px] text-slate-700">
-                        {testimonial.designation}
-                      </p>
-                      <p className="text-slate-700">{testimonial.company}</p>
-                    </div>
-                    {testimonial.headshot ? (
-                      <Image
-                        src={`${assetBase}${testimonial.headshot}`}
-                        alt={testimonial.headshotAlt ?? testimonial.name}
-                        width={110}
-                        height={110}
-                        className={
-                          testimonial.headshotClassName ??
-                          "h-[92px] w-[92px] shrink-0 rounded-2xl object-cover"
-                        }
-                      />
-                    ) : null}
-                  </div>
-                </article>
+              <TestimonialCard
+                key={`${testimonial.name}-${testimonial.companyLogo}`}
+                assetBase={assetBase}
+                testimonial={testimonial}
+              />
             ))}
           </div>
         </div>
