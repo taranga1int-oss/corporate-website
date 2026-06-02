@@ -36,7 +36,7 @@ export const testimonials: Testimonial[] = [
     companyLogoAlt: "WeWork logo",
     companyLogoWidth: 420,
     companyLogoHeight: 154,
-    companyLogoClassName: "max-h-[58px] max-w-[252px] sm:max-h-16 sm:max-w-full",
+    companyLogoClassName: "max-h-[41px] max-w-[176px] sm:max-h-11 sm:max-w-full",
     quote:
       "Swiggy's Bill to Company solution has brought unmatched transparency and control to our meal benefits. We now track expenses in real-time, stay fully aligned with budgets, and still give our employees the freedom to choose their meals. The shift has not only simplified admin but improved employee satisfaction.",
     name: "Maria Sneha",

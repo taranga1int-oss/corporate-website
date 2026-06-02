@@ -11,7 +11,7 @@ export default function TestimonialCard({
   testimonial,
 }: TestimonialCardProps) {
   return (
-    <article className="snap-start flex h-full min-h-[620px] flex-col rounded-[28px] border border-white/60 bg-white p-5 shadow-soft sm:min-h-[560px] sm:p-6 md:p-7 lg:min-h-[610px]">
+    <article className="snap-start flex h-full flex-col rounded-[28px] border border-white/60 bg-white p-5 shadow-soft sm:p-6 md:p-7">
       <div className="grid min-h-[92px] grid-cols-1 content-start items-start gap-3 sm:min-h-16 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center">
         <span className="inline-flex justify-self-start whitespace-nowrap rounded-full bg-brand-soft px-3.5 py-1.5 text-xs font-semibold text-brand sm:px-4">
           {testimonial.offering}
@@ -30,11 +30,11 @@ export default function TestimonialCard({
         </div>
       </div>
 
-      <p className="mt-5 flex-1 text-[17px] leading-[1.65] text-slate-800 sm:text-base sm:leading-relaxed">
+      <p className="mt-5 text-[17px] leading-[1.65] text-slate-800 sm:text-base sm:leading-relaxed">
         {testimonial.quote}
       </p>
 
-      <div className="mt-7 grid min-h-[92px] grid-cols-[minmax(0,1fr)_88px] items-end gap-3 sm:min-h-[100px] sm:grid-cols-[minmax(0,1fr)_96px] sm:gap-4">
+      <div className="mt-3 grid min-h-[92px] grid-cols-[minmax(0,1fr)_88px] items-start gap-3 sm:mt-4 sm:min-h-[100px] sm:grid-cols-[minmax(0,1fr)_96px] sm:gap-4">
         <div className="min-w-0 pb-1 text-base leading-snug">
           <p className="text-xl font-bold text-ink sm:text-lg">
             {testimonial.name}
