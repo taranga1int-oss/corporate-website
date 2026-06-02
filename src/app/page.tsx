@@ -248,7 +248,9 @@ export default function Home() {
                   <div className="mt-6 flex items-end justify-between gap-4">
                     <div className="text-base">
                       <p className="font-bold text-ink">{testimonial.name}</p>
-                      <p className="text-slate-700">{testimonial.designation}</p>
+                      <p className="whitespace-nowrap text-[15px] text-slate-700">
+                        {testimonial.designation}
+                      </p>
                       <p className="text-slate-700">{testimonial.company}</p>
                     </div>
                     {testimonial.headshot ? (
