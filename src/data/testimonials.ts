@@ -21,10 +21,10 @@ export const testimonials: Testimonial[] = [
     companyLogoWidth: 145,
     companyLogoHeight: 48,
     quote:
-      "Bill to Company feature has made meal management truly seamless for our employees across India. The built-in wallet eliminates reimbursement complexities entirely ? no paperwork, no payment coordination, just a smooth experience from ordering to payment. The platform discounts and dining benefits have added real value to employee satisfaction. The team's support throughout has made this a dependable partnership we genuinely value.",
+      "Bill to Company feature has made meal management truly seamless for our employees across India. The built-in wallet eliminates reimbursement complexities entirely - no paperwork, no payment coordination, just a smooth experience from ordering to payment. The platform discounts and dining benefits have added real value to employee satisfaction.",
     name: "Stanley Agnelo",
-    designation: "Vice President ? Administration",
-    company: "MediAssist, Pan India",
+    designation: "Vice President - Administration",
+    company: "MediAssist",
     headshot: "/testimonials/stanley-agnelo.png",
     headshotAlt: "Stanley Agnelo",
     headshotClassName:
@@ -40,7 +40,7 @@ export const testimonials: Testimonial[] = [
       "Swiggy's Bill to Company solution has brought unmatched transparency and control to our meal benefits. We now track expenses in real-time, stay fully aligned with budgets, and still give our employees the freedom to choose their meals. The shift has not only simplified admin but improved employee satisfaction.",
     name: "Maria Sneha",
     designation: "Administrator",
-    company: "WeWork, Hyderabad",
+    company: "WeWork",
     headshot: "/testimonials/maria-sneha.png",
     headshotAlt: "Maria Sneha",
     headshotClassName:
@@ -56,7 +56,7 @@ export const testimonials: Testimonial[] = [
       "Earlier, meal reimbursements meant chasing employees for receipts, handling paperwork, and managing multiple approval layers-costing us time and productivity. With Swiggy for Work, the process is completely seamless, eliminating administrative overhead. It has streamlined our workflows and saved valuable hours for our team.",
     name: "A V Hanisha",
     designation: "Facility Manager",
-    company: "KFintech, Hyderabad",
+    company: "KFintech",
     headshot: "/testimonials/av-hanisha.png",
     headshotAlt: "A V Hanisha",
   },
