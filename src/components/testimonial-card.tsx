@@ -30,11 +30,11 @@ export default function TestimonialCard({
         </div>
       </div>
 
-      <p className="mt-5 text-[17px] leading-[1.65] text-slate-800 sm:text-base sm:leading-relaxed">
+      <p className="mt-5 text-[17px] leading-[1.65] text-slate-800 sm:text-base sm:leading-relaxed lg:flex-1">
         {testimonial.quote}
       </p>
 
-      <div className="mt-1 grid min-h-[92px] grid-cols-[minmax(0,1fr)_88px] items-center gap-3 sm:mt-2 sm:min-h-[100px] sm:grid-cols-[minmax(0,1fr)_96px] sm:gap-4">
+      <div className="mt-1 grid min-h-[92px] grid-cols-[minmax(0,1fr)_88px] items-center gap-3 sm:mt-2 sm:min-h-[100px] sm:grid-cols-[minmax(0,1fr)_96px] sm:gap-4 lg:mt-4">
         <div className="min-w-0 pb-1 text-base leading-snug">
           <p className="text-xl font-bold text-ink sm:text-lg">
             {testimonial.name}
