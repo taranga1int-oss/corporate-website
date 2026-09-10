@@ -117,7 +117,8 @@ export default function Home() {
               </p>
             </div>
             <div className="relative lg:justify-self-end">
-              <div className="flex h-[405px] w-full max-w-[38rem] items-center justify-center overflow-hidden rounded-3xl sm:h-[459px]">
+              <div className="mx-auto flex h-[405px] w-full max-w-[38rem] items-center justify-center overflow-hidden rounded-3xl sm:h-[459px]">
+                {/* Offset the PNG's asymmetric transparent padding on phones. */}
                 <Image
                   src={`${assetBase}/table-swiggy.png`}
                   alt="Swiggy for Work team meals"
@@ -125,7 +126,7 @@ export default function Home() {
                   height={1024}
                   priority
                   sizes="(max-width: 1024px) 100vw, 54vw"
-                  className="h-full w-full object-contain"
+                  className="h-full w-full max-w-[405px] translate-x-[12.2%] object-contain sm:max-w-none sm:translate-x-0"
                 />
               </div>
             </div>
