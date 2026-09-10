@@ -108,7 +108,7 @@ export default function CorporateWalletPage() {
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="w-[82%] min-w-[320px] max-w-[460px] overflow-hidden rounded-3xl border border-white/25 bg-white/10 shadow-soft">
+            <div className="w-full max-w-[460px] overflow-hidden rounded-3xl border border-white/25 bg-white/10 shadow-soft sm:w-[82%]">
               <Image
                 src={`${assetBase}/corporate-hero-banner.jpeg?v=20260216-2232`}
                 alt="Bill to Company hero"
