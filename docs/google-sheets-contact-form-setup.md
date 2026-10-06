@@ -4,7 +4,8 @@ This website is deployed as a static site on GitHub Pages, so the contact form w
 
 ## Sheet target
 
-- Spreadsheet: `1kZqI9dfWjujDhAXV-4xn1R-HVb-FQ9MDfmR_ql7rBS0`
+- Spreadsheet: `1moMaGYDDx6Kh-h7SndiI7OaeljzhisDJ_96ABj-ROD0` ("Swiggy for Work - Website Leads")
+- Apps Script project: "Swiggy Corporate Contact Form"
 - Tab: `Sheet1`
 
 ## Deploy the Apps Script

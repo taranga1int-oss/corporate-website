@@ -1,4 +1,4 @@
-const SPREADSHEET_ID = "1kZqI9dfWjujDhAXV-4xn1R-HVb-FQ9MDfmR_ql7rBS0";
+const SPREADSHEET_ID = "1moMaGYDDx6Kh-h7SndiI7OaeljzhisDJ_96ABj-ROD0";
 const SHEET_NAME = "Sheet1";
 const HEADERS = [
   "Timestamp",
@@ -92,6 +92,9 @@ function ensureHeaders_(sheet) {
   sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
 }
 
+// Store values as plain text. A leading + = - or @ (e.g. "+91 98...")
+// would otherwise be read as a formula and show #ERROR! in the sheet.
 function cleanup_(value) {
-  return String(value || "").trim();
+  const text = String(value || "").trim();
+  return /^[=+\-@]/.test(text) ? "'" + text : text;
 }
