@@ -9,6 +9,27 @@ const offerings = [
   "Concierge-Led Food & Dining",
 ] as const;
 
+const cities = [
+  "Bengaluru",
+  "Mumbai",
+  "Delhi",
+  "Gurugram",
+  "Noida",
+  "Hyderabad",
+  "Chennai",
+  "Pune",
+  "Kolkata",
+  "Ahmedabad",
+  "Jaipur",
+  "Chandigarh",
+  "Kochi",
+  "Coimbatore",
+  "Indore",
+  "Lucknow",
+] as const;
+
+const OTHER_CITY = "Other";
+
 const contactFormEndpoint =
   process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT?.trim() ?? "";
 
@@ -18,6 +39,7 @@ export default function ContactForm() {
   const [submissionState, setSubmissionState] =
     useState<SubmissionState>("idle");
   const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [cityChoice, setCityChoice] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -28,6 +50,17 @@ export default function ContactForm() {
       .getAll("offering")
       .map((value) => String(value).trim())
       .filter(Boolean);
+
+    const city =
+      cityChoice === OTHER_CITY
+        ? String(formData.get("otherCity") ?? "").trim()
+        : cityChoice;
+
+    if (!city) {
+      setSubmissionState("error");
+      setFeedbackMessage("Please select or enter your city.");
+      return;
+    }
 
     if (!selectedOfferings.length) {
       setSubmissionState("error");
@@ -48,6 +81,7 @@ export default function ContactForm() {
       designation: String(formData.get("designation") ?? "").trim(),
       email: String(formData.get("email") ?? "").trim(),
       phone: String(formData.get("phone") ?? "").trim(),
+      city,
       offerings: selectedOfferings.join(", "),
       pageUrl: window.location.href,
       source: "swiggy-for-work-website",
@@ -67,6 +101,7 @@ export default function ContactForm() {
       });
 
       form.reset();
+      setCityChoice("");
       setSubmissionState("success");
       setFeedbackMessage(
         "Thanks. Your details have been shared with the team.",
@@ -89,6 +124,7 @@ export default function ContactForm() {
           <input
             id="name"
             name="name"
+            autoComplete="name"
             placeholder="Your full name"
             required
             className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-ink placeholder:text-slate-400"
@@ -101,6 +137,7 @@ export default function ContactForm() {
           <input
             id="designation"
             name="designation"
+            autoComplete="organization-title"
             placeholder="Your role"
             className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-ink placeholder:text-slate-400"
           />
@@ -115,6 +152,7 @@ export default function ContactForm() {
             id="email"
             name="email"
             type="email"
+            autoComplete="email"
             placeholder="name@company.com"
             required
             className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-ink placeholder:text-slate-400"
@@ -128,11 +166,52 @@ export default function ContactForm() {
             id="phone"
             name="phone"
             type="tel"
+            autoComplete="tel"
             placeholder="+91 00000 00000"
             required
             className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-ink placeholder:text-slate-400"
           />
         </div>
+      </div>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="flex flex-col gap-2">
+          <label className="font-semibold text-ink" htmlFor="city">
+            City
+          </label>
+          <select
+            id="city"
+            name="city"
+            required
+            value={cityChoice}
+            onChange={(event) => setCityChoice(event.target.value)}
+            className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-ink invalid:text-slate-400 [&>option]:text-ink"
+          >
+            <option value="" disabled>
+              Select your city
+            </option>
+            {cities.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
+            <option value={OTHER_CITY}>Other</option>
+          </select>
+        </div>
+        {cityChoice === OTHER_CITY ? (
+          <div className="flex flex-col gap-2">
+            <label className="font-semibold text-ink" htmlFor="otherCity">
+              Your City
+            </label>
+            <input
+              id="otherCity"
+              name="otherCity"
+              autoComplete="address-level2"
+              placeholder="Enter your city"
+              required
+              className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-ink placeholder:text-slate-400"
+            />
+          </div>
+        ) : null}
       </div>
       <fieldset className="flex flex-col gap-3">
         <legend className="font-semibold text-ink">

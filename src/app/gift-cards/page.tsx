@@ -1,13 +1,24 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/json-ld";
+import { pageMetadata, serviceJsonLd } from "@/lib/seo";
 import CtaBand from "@/components/cta-band";
 import BackToHomeButton from "@/components/back-to-home-button";
 import { GiftIcon, RewardsIcon, WalletIcon } from "@/components/icons";
 
-export const metadata: Metadata = {
-  title: "Gift Cards",
+const seo = {
+  name: "Swiggy Gift Cards",
+  title: "Swiggy Gift Cards for Corporate Gifting",
   description:
-    "Reward great work with Swiggy Gift Cards and enterprise-grade distribution.",
+    "Reward great work and celebrate birthdays and festivals with Swiggy Gift Cards, usable across Food, Dineout and Instamart and delivered instantly via email or SMS.",
+  path: "/gift-cards",
 };
+
+export const metadata: Metadata = pageMetadata({
+  title: seo.title,
+  description: seo.description,
+  path: seo.path,
+  keywords: ["Swiggy gift cards", "corporate gift cards", "employee gift cards", "Diwali gifts for employees", "bulk gift cards"],
+});
 
 const useCases = [
   {
@@ -55,6 +66,14 @@ const workflowVisuals = [
 export default function GiftCardsPage() {
   return (
     <div className="px-6 py-14">
+      <JsonLd
+        data={serviceJsonLd({
+          name: seo.name,
+          description: seo.description,
+          path: seo.path,
+          serviceType: "Corporate gift cards",
+        })}
+      />
       <section className="mx-auto w-full max-w-6xl space-y-10">
         <BackToHomeButton />
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">

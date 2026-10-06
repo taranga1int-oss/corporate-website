@@ -1,13 +1,24 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/json-ld";
+import { pageMetadata, serviceJsonLd } from "@/lib/seo";
 import CtaBand from "@/components/cta-band";
 import BackToHomeButton from "@/components/back-to-home-button";
 import { RewardsIcon } from "@/components/icons";
 
-export const metadata: Metadata = {
-  title: "Corporate Rewards",
+const seo = {
+  name: "Corporate Rewards",
+  title: "Corporate Rewards & Employee Offers",
   description:
-    "Onboard your company so verified employees can access exclusive Swiggy offers.",
+    "Onboard your company so verified employees unlock exclusive Swiggy offers on Food Delivery, Dineout and Instamart, with real-time redemption tracking for HR.",
+  path: "/corporate-rewards",
 };
+
+export const metadata: Metadata = pageMetadata({
+  title: seo.title,
+  description: seo.description,
+  path: seo.path,
+  keywords: ["corporate rewards", "employee benefits", "employee discounts", "Swiggy corporate offers", "employee rewards program"],
+});
 
 const stats = [
   { label: "Verified employees", value: "3.1 lakh" },
@@ -56,6 +67,14 @@ const journey = [
 export default function CorporateRewardsPage() {
   return (
     <div className="px-6 py-14">
+      <JsonLd
+        data={serviceJsonLd({
+          name: seo.name,
+          description: seo.description,
+          path: seo.path,
+          serviceType: "Employee rewards and benefits",
+        })}
+      />
       <section className="mx-auto w-full max-w-6xl space-y-10">
         <BackToHomeButton />
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">

@@ -28,3 +28,22 @@ This website is deployed as a static site on GitHub Pages, so the contact form w
 5. Re-run the `Deploy to GitHub Pages` workflow or push a new commit.
 
 Once that variable is set, the `Talk to our team` form will append each submission into `Sheet1`.
+
+## Columns written to the sheet
+
+`Timestamp | Name | Designation | Email | Phone | Offerings | Page URL | Source | City`
+
+`City` is the last column on purpose: older rows keep their positions and simply have an empty City cell. On the first submission after the update, the script rewrites the header row in place to add `City`.
+
+## Updating the script after a form change (e.g. adding City)
+
+Edit the **existing** deployment instead of creating a new one, so the `/exec` URL stays the same and nothing needs to change in GitHub:
+
+1. Open the spreadsheet -> `Extensions` -> `Apps Script`.
+2. Replace the code with the latest [google-sheets-contact-form.gs](./google-sheets-contact-form.gs) and click `Save`.
+3. Click `Deploy` -> `Manage deployments`.
+4. Select the active web app deployment and click the pencil (`Edit`) icon.
+5. Under `Version`, choose `New version`, then click `Deploy`.
+6. Optional: type `City` into cell `I1` of `Sheet1` yourself (the script will also do it on the next submission).
+
+> If you create a *new* deployment instead, Google issues a new `/exec` URL. You would then have to update the `NEXT_PUBLIC_CONTACT_FORM_ENDPOINT` variable in GitHub (or wherever the site is hosted) and redeploy the site.

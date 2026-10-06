@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/json-ld";
+import { pageMetadata, serviceJsonLd } from "@/lib/seo";
 import Image from "next/image";
 import CtaBand from "@/components/cta-band";
 import BackToHomeButton from "@/components/back-to-home-button";
@@ -13,11 +15,20 @@ import {
   TravelMealIcon,
 } from "@/components/icons";
 
-export const metadata: Metadata = {
-  title: "Bill to Company",
+const seo = {
+  name: "Bill to Company",
+  title: "Bill to Company: Corporate Meal Expenses",
   description:
-    "Digitize corporate meal and travel expenses with a bill-to-company workflow and myBiz integration.",
+    "Let employees order meals on Swiggy and bill them to the company. No out-of-pocket spends or reimbursements, one monthly GST invoice and policy-led spend limits.",
+  path: "/corporate-wallet",
 };
+
+export const metadata: Metadata = pageMetadata({
+  title: seo.title,
+  description: seo.description,
+  path: seo.path,
+  keywords: ["bill to company", "corporate meal expense management", "meal reimbursement software", "corporate wallet", "GST invoice for food"],
+});
 
 const platformBlocks = [
   {
@@ -83,6 +94,14 @@ export default function CorporateWalletPage() {
 
   return (
     <div className="px-6 py-14">
+      <JsonLd
+        data={serviceJsonLd({
+          name: seo.name,
+          description: seo.description,
+          path: seo.path,
+          serviceType: "Corporate meal expense management",
+        })}
+      />
       <section className="mx-auto w-full max-w-6xl space-y-10">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div className="space-y-5 text-white">
@@ -111,7 +130,7 @@ export default function CorporateWalletPage() {
             <div className="w-full max-w-[460px] overflow-hidden rounded-3xl border border-white/25 bg-white/10 shadow-soft sm:w-[82%]">
               <Image
                 src={`${assetBase}/corporate-hero-banner.jpeg?v=20260216-2232`}
-                alt="Bill to Company hero"
+                alt="Swiggy for Work Bill to Company for corporate meals"
                 width={1400}
                 height={900}
                 priority

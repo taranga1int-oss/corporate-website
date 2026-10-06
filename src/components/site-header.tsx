@@ -15,7 +15,7 @@ export default function SiteHeader() {
         >
           <Image
             src={`${assetBase}/swiggy-logo.png`}
-            alt="Swiggy"
+            alt="Swiggy logo"
             width={120}
             height={120}
             priority

@@ -9,6 +9,7 @@ const HEADERS = [
   "Offerings",
   "Page URL",
   "Source",
+  "City",
 ];
 
 function doGet() {
@@ -43,6 +44,7 @@ function doPost(e) {
       cleanup_(params.offerings),
       cleanup_(params.pageUrl),
       cleanup_(params.source || "swiggy-for-work-website"),
+      cleanup_(params.city),
     ]);
 
     return ContentService.createTextOutput(
@@ -74,10 +76,20 @@ function ensureHeaders_(sheet) {
     .map((cell) => String(cell).trim());
 
   const headerMismatch = HEADERS.some((header, index) => firstRow[index] !== header);
-  if (headerMismatch) {
-    sheet.insertRowBefore(1);
-    sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
+  if (!headerMismatch) {
+    return;
   }
+
+  // Row 1 is already a header row (e.g. an older version without "City"):
+  // update it in place so existing rows stay aligned under the right columns.
+  if (firstRow[0] === HEADERS[0]) {
+    sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
+    return;
+  }
+
+  // Row 1 holds data, so add a header row above it.
+  sheet.insertRowBefore(1);
+  sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
 }
 
 function cleanup_(value) {

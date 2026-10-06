@@ -1,13 +1,24 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/json-ld";
+import { pageMetadata, serviceJsonLd } from "@/lib/seo";
 import CtaBand from "@/components/cta-band";
 import BackToHomeButton from "@/components/back-to-home-button";
 import { ConciergeIcon } from "@/components/icons";
 
-export const metadata: Metadata = {
-  title: "Concierge-Led Food & Dining",
+const seo = {
+  name: "Concierge-Led Food & Dining",
+  title: "Bulk Office Food Orders & Corporate Dining",
   description:
-    "One point of contact for corporate meal delivery, dining events, and celebrations.",
+    "One concierge for bulk office meals (50+ thalis), onboarding lunches, workshops, team outings, offsites and town halls, with curated options and consolidated billing.",
+  path: "/concierge-led-food-dining",
 };
+
+export const metadata: Metadata = pageMetadata({
+  title: seo.title,
+  description: seo.description,
+  path: seo.path,
+  keywords: ["bulk food order for office", "corporate catering", "team lunch delivery", "office party food", "corporate dining"],
+});
 
 const useCases = [
   "Large-scale meal delivery (50+ thalis)",
@@ -64,6 +75,14 @@ const flow = [
 export default function ConciergeLedFoodDiningPage() {
   return (
     <div className="px-6 py-14">
+      <JsonLd
+        data={serviceJsonLd({
+          name: seo.name,
+          description: seo.description,
+          path: seo.path,
+          serviceType: "Corporate catering and dining concierge",
+        })}
+      />
       <section className="mx-auto w-full max-w-6xl space-y-10">
         <BackToHomeButton />
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">

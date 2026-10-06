@@ -21,7 +21,7 @@ export default function SiteFooter() {
             <div className="flex items-center gap-3 text-lg font-semibold text-ink">
               <Image
                 src={`${assetBase}/swiggy-logo.png`}
-                alt="Swiggy"
+                alt="Swiggy logo"
                 width={44}
                 height={44}
               />

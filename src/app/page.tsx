@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
+import type { Metadata } from "next";
 import ContactForm from "@/components/contact-form";
 import TestimonialCard from "@/components/testimonial-card";
 import { testimonials } from "@/data/testimonials";
+import JsonLd from "@/components/json-ld";
+import { SITE_URL, absoluteUrl, pageMetadata } from "@/lib/seo";
 import {
   ChevronRight,
   ConciergeIcon,
@@ -11,6 +13,21 @@ import {
   RewardsIcon,
   WalletIcon,
 } from "@/components/icons";
+
+const homeDescription =
+  "Simplify workplace food with Swiggy for Work: bill-to-company meals, corporate rewards, Swiggy gift cards and concierge-led bulk orders & team dining in India.";
+
+export const metadata: Metadata = {
+  ...pageMetadata({
+    title: "Swiggy for Work",
+    socialTitle: "Swiggy for Work | Corporate Food, Rewards & Gifting",
+    description: homeDescription,
+    path: "/",
+  }),
+  title: {
+    absolute: "Swiggy for Work | Corporate Meals, Rewards & Gift Cards",
+  },
+};
 
 const solutions = [
   {
@@ -80,26 +97,33 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Swiggy for Work",
-    provider: {
-      "@type": "Organization",
-      name: "Swiggy for Work",
-      url: "https://www.swiggyforwork.com",
-    },
+    description: homeDescription,
+    url: absoluteUrl("/"),
+    provider: { "@id": `${SITE_URL}/#organization` },
     serviceType: "Corporate food delivery, rewards, and dining services",
-    areaServed: "IN",
+    areaServed: { "@type": "Country", name: "India" },
     audience: {
       "@type": "BusinessAudience",
       name: "Enterprise HR, Admin, and Finance teams",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Swiggy for Work solutions",
+      itemListElement: solutions.map((solution) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: solution.title,
+          description: solution.description,
+          url: absoluteUrl(solution.href),
+        },
+      })),
     },
   };
 
   return (
     <div className="bg-hero">
-      <Script
-        id="schema-b2b"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <JsonLd data={schema} />
       <section className="relative overflow-hidden px-6 pb-6 pt-12">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
@@ -121,7 +145,7 @@ export default function Home() {
                 {/* Offset the PNG's asymmetric transparent padding on phones. */}
                 <Image
                   src={`${assetBase}/table-swiggy.png`}
-                  alt="Swiggy for Work team meals"
+                  alt="Colleagues sharing a Swiggy for Work team meal around an office table"
                   width={1024}
                   height={1024}
                   priority
@@ -201,7 +225,8 @@ export default function Home() {
                   <div className="mx-auto">
                     <Image
                       src={`${assetBase}${item.imageSrc}`}
-                      alt={item.title}
+                      alt=""
+                      aria-hidden="true"
                       width={150}
                       height={150}
                       className="mx-auto h-[150px] w-[150px] object-contain"
