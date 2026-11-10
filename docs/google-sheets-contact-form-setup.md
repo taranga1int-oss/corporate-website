@@ -1,3 +1,8 @@
+> **Superseded (Nov 2026):** the website form is now an embedded Tally form
+> ("Swiggy for Work — Talk to our team", id `1WkZDb`, FMP-Corporate workspace).
+> Tally stores every submission, emails the team and syncs to Google Sheets via
+> its built-in integration. The Apps Script below is no longer called by the site.
+
 # Google Sheets Contact Form Setup
 
 This website is deployed as a static site on GitHub Pages, so the contact form writes to Google Sheets through a Google Apps Script web app.
