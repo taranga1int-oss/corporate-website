@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import ContactForm from "@/components/contact-form";
+import TallyForm from "@/components/tally-form";
 import TestimonialCard from "@/components/testimonial-card";
 import { testimonials } from "@/data/testimonials";
 import JsonLd from "@/components/json-ld";
@@ -274,7 +274,7 @@ export default function Home() {
                 in touch with relevant details within 24 working hours.
               </p>
             </div>
-            <ContactForm />
+            <TallyForm />
           </div>
         </div>
       </section>
