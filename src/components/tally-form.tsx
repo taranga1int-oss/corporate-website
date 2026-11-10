@@ -33,22 +33,35 @@ export default function TallyForm() {
   useEffect(() => {
     // Set after mount so the hidden page_url field gets the real page address.
     const next = buildSrc(window.location.href);
-    const id = requestAnimationFrame(() => {
+    const raf = requestAnimationFrame(() => {
       setSrc(next);
-      window.Tally?.loadEmbeds();
+      // Let Tally's script load the form so it can also auto-resize the iframe.
+      requestAnimationFrame(() => window.Tally?.loadEmbeds());
     });
-    return () => cancelAnimationFrame(id);
+    // Fallback: if Tally's script is blocked, load the form directly.
+    const fallback = window.setTimeout(() => {
+      const frame = document.querySelector<HTMLIFrameElement>(
+        "iframe[data-tally-src]",
+      );
+      if (frame && !frame.getAttribute("src")) {
+        frame.src = next;
+        frame.style.height = "980px";
+      }
+    }, 5000);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(fallback);
+    };
   }, []);
 
   return (
-    <div className="min-h-[640px]">
+    <div className="min-h-[720px]">
       {src ? (
         <iframe
           data-tally-src={src}
-          src={src}
           loading="lazy"
           width="100%"
-          height={640}
+          height={720}
           frameBorder={0}
           marginHeight={0}
           marginWidth={0}
