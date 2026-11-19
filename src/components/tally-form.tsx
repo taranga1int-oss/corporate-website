@@ -27,10 +27,14 @@ function buildSrc(pageUrl: string) {
   return `https://tally.so/embed/${TALLY_FORM_ID}?${params.toString()}`;
 }
 
+// Preview deployments set this so test clicks don't create real leads.
+const FORM_DISABLED = process.env.NEXT_PUBLIC_DISABLE_FORM === "1";
+
 export default function TallyForm() {
   const [src, setSrc] = useState<string | null>(null);
 
   useEffect(() => {
+    if (FORM_DISABLED) return;
     // Set after mount so the hidden page_url field gets the real page address.
     const next = buildSrc(window.location.href);
     const raf = requestAnimationFrame(() => {
@@ -53,6 +57,15 @@ export default function TallyForm() {
       window.clearTimeout(fallback);
     };
   }, []);
+
+  if (FORM_DISABLED) {
+    return (
+      <div className="rounded-2xl border border-dashed border-black/15 bg-[#faf7f4] p-8 text-center text-sm text-slate-600">
+        The contact form is turned off on this preview so test clicks don&apos;t
+        create real leads. It works as usual on swiggyforwork.in.
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-[720px]">

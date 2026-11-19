@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import TallyForm from "@/components/tally-form";
+import HeroVideo from "@/components/hero-video";
 import TestimonialCard from "@/components/testimonial-card";
 import { testimonials } from "@/data/testimonials";
 import JsonLd from "@/components/json-ld";
@@ -121,9 +122,22 @@ export default function Home() {
     },
   };
 
+  const videoSchema = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: "How Bill to Company works on Swiggy",
+    description:
+      "Order a work meal on Swiggy in a few taps: choose a restaurant, add items, switch to Corporate mode, enter business details and bill it to your company.",
+    thumbnailUrl: [absoluteUrl("/video/how-it-works-poster.jpg")],
+    contentUrl: absoluteUrl("/video/how-it-works.mp4"),
+    uploadDate: "2026-11-17",
+    duration: "PT17S",
+  };
+
   return (
     <div className="bg-hero">
       <JsonLd data={schema} />
+      <JsonLd data={videoSchema} />
       <section className="relative overflow-hidden px-6 pb-6 pt-12">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
@@ -141,16 +155,10 @@ export default function Home() {
               </p>
             </div>
             <div className="relative lg:justify-self-end">
-              <div className="mx-auto flex h-[405px] w-full max-w-[38rem] items-center justify-center overflow-hidden rounded-3xl sm:h-[459px]">
-                {/* Offset the PNG's asymmetric transparent padding on phones. */}
-                <Image
-                  src={`${assetBase}/table-swiggy.png`}
-                  alt="Colleagues sharing a Swiggy for Work team meal around an office table"
-                  width={1024}
-                  height={1024}
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 54vw"
-                  className="h-full w-full max-w-[405px] translate-x-[12.2%] object-contain sm:max-w-none sm:translate-x-0"
+              <div className="mx-auto aspect-square w-full max-w-[405px] overflow-hidden rounded-3xl shadow-[0_24px_60px_-20px_rgba(16,24,40,0.45)] ring-1 ring-white/25 sm:max-w-[459px]">
+                <HeroVideo
+                  assetBase={assetBase}
+                  label="How Bill to Company works: choose a restaurant, add items, switch to Corporate mode, enter business details and place the order"
                 />
               </div>
             </div>
